@@ -1,12 +1,18 @@
 import React from "react";
-import CandidateDashboard from "./pages/CandidateDashboard"; // ✅ Import your dashboard
-/*import "./styles/global.css"; // ✅ Optional global styles*/
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CandidateDashboard from "./pages/CandidateDashboard";
+import InterviewerDashboard from "./pages/InterviewerDashboard";
+import DummyHome from "./pages/DummyHome"; 
 
 const App = () => {
   return (
-    <div className="app-container">
-      <CandidateDashboard /> {/* ✅ Load the dashboard directly */}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<DummyHome />} /> 
+        <Route path="/candidate-dashboard" element={<CandidateDashboard />} />
+        <Route path="/interviewer-dashboard" element={<InterviewerDashboard />} />
+      </Routes>
+    </Router>
   );
 };
 

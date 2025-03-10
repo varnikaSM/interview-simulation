@@ -16,7 +16,7 @@ CORS(app)  # Enable CORS for frontend requests
 # MongoDB Connection
 MONGO_URI = "mongodb+srv://varnikasm:ikzPxFJOHhIuw8ch@cluster0.lig9v.mongodb.net/"
 client = MongoClient(MONGO_URI)
-db = client["resume_db"]
+db = client["test"]
 collection = db["resumes"]
 
 # Set Gemini API Key

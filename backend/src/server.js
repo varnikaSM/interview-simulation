@@ -1,5 +1,5 @@
 
-
+import interviewerRoutes from "./routes/interviewerRoutes.js"
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
@@ -20,6 +20,7 @@ app.use(express.json()); // ✅ Parse JSON bodies
 app.use("/api/users", userRoutes);   // ✅ Candidate User API (Updated)
 app.use("/api/resumes", resumeRoutes);
 app.use("/api/interviews", interviewRoutes); // ✅ Resume Upload API
+app.use("/api/interviewers", interviewerRoutes); // ✅ Add interviewer routess
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

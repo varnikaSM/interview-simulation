@@ -1,6 +1,6 @@
 import express from "express";
 import getInterviewModel from "../models/InterviewModel.js";
-import { protect } from "../middleware/authMiddleware.js";
+import protect  from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
