@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 // ✅ Counter Schema for Auto-Incrementing candidateId
 const CounterSchema = new mongoose.Schema({
     name: { type: String, required: true, unique: true },
-    value: { type: Number, default: 1 }
+    value: { type: Number, default: 1 } 
 });
 
 const Counter = mongoose.model("Counter", CounterSchema);

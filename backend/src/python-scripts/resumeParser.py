@@ -73,25 +73,28 @@ def extract_keywords_with_gemini(text):
         return {"error": f"Gemini API call failed: {e}"}
 
 def save_to_mongo(data, candidate_id):
-    """Save extracted data to MongoDB and link to candidateId"""
+    """Ensure only one resume record per candidate (overwrite if exists)"""
     try:
-        # Convert candidate_id to ObjectId if needed
-        if isinstance(candidate_id, str):
-            candidate_id = ObjectId(candidate_id)
+       
 
-        # Add candidateId as a foreign key
+        # Add candidateId as a reference
         data["candidateId"] = candidate_id
 
-        inserted_doc = collection.insert_one(data)
+        # ✅ Check if candidate already has a resume
+        existing_resume = collection.find_one({"candidateId": candidate_id})
 
-        # Convert ObjectId to string for JSON response
-        data["_id"] = str(inserted_doc.inserted_id)
-        data["candidateId"] = str(candidate_id)
-
-        return {"message": "Data saved successfully", "data": data}
+        if existing_resume:
+            # ✅ Overwrite the existing resume instead of creating a new one
+            collection.update_one({"candidateId": candidate_id}, {"$set": data})
+            return {"message": "Resume updated successfully", "data": data}
+        else:
+            # ✅ Insert new resume if none exists
+            inserted_doc = collection.insert_one(data)
+            data["_id"] = str(inserted_doc.inserted_id)
+            return {"message": "Resume saved successfully", "data": data}
 
     except Exception as e:
-        return {"error": f"MongoDB Insert Failed: {e}"}
+        return {"error": f"MongoDB Insert/Update Failed: {e}"}
 
 
 @app.route("/upload", methods=["POST"])
@@ -126,4 +129,4 @@ def upload_resume():
     return jsonify(save_to_mongo(extracted_data, candidate_id))
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5001, debug=True)

@@ -1,0 +1,131 @@
+/* 🎨 General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* 📌 Main Dashboard Container */
+.dashboard-container {
+    width: 80%;
+    max-width: 900px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* 🏷️ Section Titles */
+h1 {
+    font-size: 26px;
+    color: #333;
+}
+
+h2 {
+    font-size: 20px;
+    color: #444;
+    margin-top: 20px;
+}
+
+/* 📌 Profile Overview */
+.profile-overview {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-overview p {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+}
+
+/* 📄 Resume Upload */
+.resume-upload {
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.resume-upload:hover {
+    border-color: #007bff;
+}
+
+/* 📅 Interview Sessions */
+.interview-sessions {
+    text-align: left;
+    padding: 15px;
+    background: #eef;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.interview-sessions ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.interview-sessions li {
+    background: #e0e7ff;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+/* 📊 Performance Analytics */
+.performance-analytics {
+    background: #d4edda;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.performance-analytics p {
+    color: #155724;
+    font-size: 16px;
+}
+
+/* 🚀 Start Interview Button */
+.start-interview {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 20px auto;
+    padding: 12px;
+    background: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.start-interview:hover {
+    background: #0056b3;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .start-interview {
+        max-width: 200px;
+    }
+}
